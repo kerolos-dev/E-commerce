@@ -19,7 +19,10 @@ const  brandSchema=new  mongoose.Schema({
     createBy:{
         type:Types.ObjectId,
         ref:'User',
-    },
+    }, 
+    brands: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Brand' }]
+
+    
 },
 {
     timestamps:true

@@ -2,11 +2,11 @@ import  nodemailer   from "nodemailer"
 
 
 
-export async function sendMassega({to,subject,text,html}){
+export async function sendMassa({to,subject,text,html}){
 
     const transporter = nodemailer.createTransport({
       host: "localhost",
-      port:3000,
+      port:3001,
       secure: true, // Use `true` for port 465, `false` for all other ports
       service: "gmail",
       auth: {

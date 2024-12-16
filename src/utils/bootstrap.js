@@ -1,7 +1,9 @@
 import authRouter from "../modules/auth/auth.router.js"
 import brandRouter from "../modules/brand/brand.router.js"
+import cartRouter from "../modules/cart/cart.router.js"
 import { categoryRouter } from "../modules/category/category.router.js"
 import couponRouter from "../modules/coupon/coupon.router.js"
+import productRouter from "../modules/product/product.router.js"
 import { subCategoryRouter } from "../modules/subCategory/subCategory.router.js"
 import { AppError } from "./appError.js"
 
@@ -17,6 +19,8 @@ export  const  bootstrap=(app)=>{
     app.use('/subCategory', subCategoryRouter )
     app.use('/brand', brandRouter )
     app.use('/coupon', couponRouter )
+    app.use('/product', productRouter )
+    app.use('/cart', cartRouter )
 
     //  page is not found  handlers  
     app.all("*", (req,res ,next)=>{

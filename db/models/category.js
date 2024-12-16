@@ -1,22 +1,27 @@
-import  mongoose,{Types} from "mongoose"
+import  mongoose   from 'mongoose'
+import slugify  from 'slugify'
 
-const  categorySchema=new  mongoose.Schema({
-    name:{type: String , required:true  ,  unique :  true ,  min:5 ,  max: 20 },
-    slug:{type: String  ,  required :  true , unique :  true  } ,  
-    createdBy:{type:Types.ObjectId, ref:"User" ,},
-    image:{ id :{type: String} ,  url:{type :String}},
-    brand:{type:Types.ObjectId, ref:"Brand",required :true }
-},{
-    //  this is for pontine   _vt and  createdAt and  updateAT 
-    timestamps: true 
-})
- 
+// Define the schema
+const categorySchema = new mongoose.Schema({
+  name: { type: String, required: true, unique: true },
+  slug: { type: String, required: true },
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  image: {
+    id: { type: String, required: true },
+    url: { type: String, required: true },
+  },
+  
+}, { timestamps: true });
 
+// Add post middleware for "deleteOne"
+categorySchema.post("deleteOne", { document: true, query: false }, async function(doc) {
+  if (doc) {
+    console.log(`Category deleted: ${doc}`);
+    // Perform any additional cleanup logic here
+  }
+});
 
+// Create the model
+export const CategoryModel = mongoose.model("Category", categorySchema);
 
-const  CategoryModel=mongoose.model('category',categorySchema)
-
-export{
-    CategoryModel
-}
 

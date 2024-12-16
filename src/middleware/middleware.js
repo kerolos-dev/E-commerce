@@ -12,9 +12,10 @@ export const authorize = (roles = []) => {
       console.log('User Role:', req.user.role); // Debug output
       return res.status(403).json({ success: false, message: 'Not authorized' });
     }
-
+ 
     next(); // User is authorized, proceed to next middleware
   };
 };
+
 
 

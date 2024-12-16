@@ -7,7 +7,7 @@ const  coupon= new  Schema({
     name:{type:String , required:  true ,  unique :  true},
     discount:{type:Number , min:1 ,max:100 ,  required: true},
     expiredAt:{type:Number  , required: true},
-    createdBy:{type: Types.ObjectId , ref:"User",  required:true},
+    createdBy:{type:Types.ObjectId, ref:"User" ,} ///  coment  for  omr    //    required
 
 },
 {timestamps:  true},

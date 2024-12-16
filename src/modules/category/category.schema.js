@@ -1,5 +1,5 @@
 import Joi  from   'joi';
-import { isValidObjectId } from '../../middilware/validation.middilware.js';
+import { isValidObjectId } from '../../middleware/validation.middleware.js';
 
 const  createCategory=Joi.object({
     name: Joi.string().required().max(20).min(5),
@@ -18,5 +18,5 @@ const  upDatecategory=Joi.object({
 export{
     createCategory,
     upDatecategory,
-    deletecategory
+    deletecategory as datecategory
 }

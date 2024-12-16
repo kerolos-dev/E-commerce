@@ -1,16 +1,17 @@
 import { Router } from "express"; 
-import  {validation} from  "./../../middilware/validation.middilware.js"
 import  *  as authcontroller from  "./auth.controller.js"
-import  *  as authsechema from  "./auth.sechema.js"
-
+import  *  as authsechema from  "./auth.schema.js"
+import { validation } from "../../middleware/validation.middleware.js";
 
 const authRouter =  Router();
 
 authRouter.post("/register",validation(authsechema.register),authcontroller.register)
-authRouter.get("/activateAccount/:token",validation(authsechema.activateAccoun),authcontroller.activateAccount)
-authRouter.post("/login",validation(authsechema.login),authcontroller.logen)
-authRouter.patch("/forgoyPassowrd",validation(authsechema.forgoyPass),authcontroller.forgoyPass)
-authRouter.patch("/resetPassowrd",validation(authsechema.resetPassowrd),authcontroller.resetPass)
+// authRouter.get("/activateAccount/:token",validation(authsechema.activateAccount),authcontroller.activateAccount)
+authRouter.post("/login",validation(authsechema.login),authcontroller.logan)
+authRouter.patch("/forGetPass",validation(authsechema.forGetPass),authcontroller.forGetPass)
+authRouter.patch("resetPassword",validation(authsechema.resetPassword),authcontroller.resetPass)
 
 
 export default  authRouter
+
+

@@ -1,9 +1,9 @@
 import  {Router}  from "express" ;
 import { fileUpload } from "../../utils/uploadFile.js";
-import { validation } from "../../middilware/validation.middilware.js";
-import { isAuthenticated } from "../../middilware/authentication.js";
-import  *  as  brandsechema from "./brand.sechema.js";
+import  *  as  brandsechema from "./brand.schema.js";
 import  *  as  brandController  from "./brand.controller.js";
+import { isAuthenticated } from "../../middleware/authentication.js";
+import { validation } from "../../middleware/validation.middleware.js";
 const  brandRouter =Router()
 
 

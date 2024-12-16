@@ -1,5 +1,5 @@
 import   mongoose, { Types }  from "mongoose";
-
+ import  bcrypt  from "bcrypt"
 
 const  userSchema=new   mongoose.Schema({
     name:{
@@ -62,6 +62,14 @@ const  userSchema=new   mongoose.Schema({
         timestamps: true 
 })
 
+
+// Pre-save hook to hash the password before saving
+userSchema.pre('save',  async function (next) {
+    // Only hash the password if it has been modified or is new
+    if (this.isModified('password')){
+        this.password  = bcrypt.hashSync (this.password ,parseInt(process.env.SALT_ROUND))
+    }
+});
 
 
   export  const   User=mongoose.model("User",userSchema)
